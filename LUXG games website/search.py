@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Sample games data for search
+# Sample data for games (can be replaced with a database later)
 games = [
     {"name": "Warframe", "genre": "Action", "image": "images/trending-01.jpg"},
     {"name": "Tower of fantasy", "genre": "Action", "image": "images/trending-02.jpg"},
@@ -17,12 +17,15 @@ games = [
 
 @app.route("/search", methods=["GET"])
 def search():
+    # Get the search query from the URL parameters
     query = request.args.get("query", "").lower()
     if not query:
         return jsonify([])
-    # Filter games based on query (case-insensitive)
+    # Filter games based on the query
     results = [game for game in games if query in game["name"].lower()]
     return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+     

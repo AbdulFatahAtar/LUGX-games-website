@@ -514,14 +514,14 @@ body {
 }
 .loginContainer form button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #0171F9;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 .loginContainer form button:hover {
-    background-color: #45a049;
+    background-color: #023779;
 }
 /* SEARCH POPUP (إذا لزم الأمر) */
 #searchPopup {
