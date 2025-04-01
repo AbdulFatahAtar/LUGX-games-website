@@ -505,15 +505,23 @@ body {
 .loginContainer form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .loginContainer form input {
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+.loginContainer .btnContainer {
+    display: flex;
+    gap: 20px; /* المسافة بين الزرين */
+    width: 100%;
+    justify-content: center;
+}
 .loginContainer form button {
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #0171F9;
     color: #fff;
     border: none;
@@ -523,6 +531,7 @@ body {
 .loginContainer form button:hover {
     background-color: #023779;
 }
+
 /* SEARCH POPUP (إذا لزم الأمر) */
 #searchPopup {
     margin-top: 10px;
