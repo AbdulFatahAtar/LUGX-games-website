@@ -19,10 +19,11 @@
           <img src="images/logo.png" alt="logo" />
         </a>
         <div class="headerLinks">
-          <button class="btn" onclick="window.open('index.html','_self')">Home</button>
-          <button class="btn" onclick="window.open('ourShop.html','_self')">Our Shop</button>
-          <button class="btn" onclick="window.open('contactUs.html','_self')">Contact Us</button>
-          <button class="btn signInBtn" onclick="window.open('login.html','_self')">Sign In</button>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('login_page') }}">Login</a></li>
+          <li><a href="{{ url_for('account_page') }}">Account</a></li>
+          <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+          <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
         </div>
       </div>
     </div>
