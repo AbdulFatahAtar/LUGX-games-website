@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+    <title>LUGX</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div class="headerContainer">
+      <div class="header">
+        <a href="index.html" class="logo">
+          <img src="static/images/logo.png" alt="logo" />
+        </a>
+        <div class="headerLinks">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('login_page') }}">Login</a></li>
+          <li><a href="{{ url_for('account_page') }}">Account</a></li>
+          <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+          <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTAINER لعرض جميع البطاقات -->
+    <div class="shopContainer">
+      <div class="shopHeader">
+        <h1>Our Shop</h1>
+        <p>Browse through our collection of amazing gaming products!</p>
+      </div>
+
+    <!-- TRENDING GAMES SECTION -->
+    <div class="trendingContainer">
+      <span>Trending</span>
+      <div class="trendingHeader">
+        <h1>Trending Games</h1>
+        <!-- "View All" button opens ourShop.html in a new tab -->
+        <button class="btn" onclick="window.open('ourShop.html','_blank')">view all</button>
+      </div>
+      <div class="trendingCard">
+        <!-- Game Card 1 -->
+        <div class="card">
+          <img src="static/images/trending-01.jpg" alt="Trending Game 1" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Action</p>
+              <h3>Warframe</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="static/images/online-shopping.png" alt="Cart Icon" />
+            </a>
+          </div>
+        </div>
+        <!-- Game Card 2 -->
+        <div class="card">
+          <img src="static/images/trending-02.jpg" alt="Trending Game 2" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Action</p>
+              <h3>Tower of fantasy</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="static/images/online-shopping.png" alt="Cart Icon" />
+            </a>
+          </div>
+        </div>
+        <!-- Game Card 3 -->
+        <div class="card">
+          <img src="static/images/trending-03.jpg" alt="Trending Game 3" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Action</p>
+              <h3>Super people</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="static/images/online-shopping.png" alt="Cart Icon" />
+            </a>
+          </div>
+        </div>
+        <!-- Game Card 4 -->
+        <div class="card">
+          <img src="static/images/trending-04.jpg" alt="Trending Game 4" />
+          <div class="cardInfo">
+            <div class="cardName">
+              <p>Action</p>
+              <h3>Dragon</h3>
+            </div>
+            <a href="#" class="icon">
+              <img src="static/images/online-shopping.png" alt="Cart Icon" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MOST PLAYED GAMES SECTION -->
+    <div class="mostContainer">
+      <div class="mostPlayed">
+        <span>top games</span>
+        <div class="mostHeader">
+          <h1>Most Played</h1>
+          <button class="btn" onclick="window.open('ourShop.html','_blank')">view all</button>
+        </div>
+        <div class="mostCards">
+          <!-- Game Card 1 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-01.jpg" alt="Top Game 1" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Warframe</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+          <!-- Game Card 2 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-02.jpg" alt="Top Game 2" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Pubg</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+          <!-- Game Card 3 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-03.jpg" alt="Top Game 3" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Apex</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+          <!-- Game Card 4 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-04.jpg" alt="Top Game 4" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">The sims 4</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+          <!-- Game Card 5 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-05.jpg" alt="Top Game 5" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Lostark</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+          <!-- Game Card 6 -->
+          <div class="card">
+            <div class="cardImg">
+              <img src="static/images/top-game-06.jpg" alt="Top Game 6" />
+            </div>
+            <div class="cardInfo">
+              <p class="genre">Adventure</p>
+              <h3 class="cardName">Destiny 2</h3>
+              <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- TOP CATEGORIES SECTION -->
+    <div class="categoryContainer">
+      <div class="category">
+        <div class="categoryHeader">
+          <span>top games</span>
+          <h1>Top Categories</h1>
+        </div>
+        <div class="categoryCards">
+          <!-- Category Card 1 -->
+          <div class="card">
+            <div class="genre">Puzzle Games</div>
+            <div class="cardImg">
+              <img src="static/images/categories-01.jpg" alt="Category 1" />
+            </div>
+          </div>
+          <!-- Category Card 2 -->
+          <div class="card">
+            <div class="genre">Strategy Games</div>
+            <div class="cardImg">
+              <img src="static/images/categories-02.jpg" alt="Category 2" />
+            </div>
+          </div>
+          <!-- Category Card 3 -->
+          <div class="card">
+            <div class="genre">Racing Games</div>
+            <div class="cardImg">
+              <img src="static/images/categories-03.jpg" alt="Category 3" />
+            </div>
+          </div>
+          <!-- Category Card 4 -->
+          <div class="card">
+            <div class="genre">Adventure Games</div>
+            <div class="cardImg">
+              <img src="static/images/categories-04.jpg" alt="Category 4" />
+            </div>
+          </div>
+          <!-- Category Card 5 -->
+          <div class="card">
+            <div class="genre">Action Games</div>
+            <div class="cardImg">
+              <img src="static/images/categories-05.jpg" alt="Category 5" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- End shopProducts -->
+    </div>
+    <!-- End shopContainer -->
+
+    <!-- FOOTER -->
+    <div class="footerContainer">
+      <div class="footer">
+        &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
+

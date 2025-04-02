@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+    <title>LUGX</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div class="headerContainer">
+      <div class="header">
+        <a href="index.html" class="logo">
+          <img src="static/images/logo.png" alt="logo" />
+        </a>
+        <div class="headerLinks">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('login_page') }}">Login</a></li>
+          <li><a href="{{ url_for('account_page') }}">Account</a></li>
+          <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+          <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM  -->
+    <div class="formContainer">
+        <form action="index.html">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea name="question" cols="30" rows="10" placeholder="Any Question"></textarea>
+            <button class="btn">Send</button>    
+        </form>
+    </div>
+
+
+    <!-- FOOTER  -->
+    <div class="footerContainer">
+        <div class="footer">
+            &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
+        </div>
+    </div>
+</body>
+</html>

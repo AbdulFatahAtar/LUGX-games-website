@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUGX - Login/Register</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+  <!-- HEADER SECTION -->
+  <div class="headerContainer">
+    <div class="header">
+      <a href="index.html" class="logo">
+        <img src="static/images/logo.png" alt="logo" />
+      </a>
+      <div class="headerLinks">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('login_page') }}">Login</a></li>
+        <li><a href="{{ url_for('account_page') }}">Account</a></li>
+        <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN/REGISTER FORM SECTION -->
+  <div class="loginContainer">
+    <h2>Login or Register</h2>
+    <!-- Notification message will appear here -->
+    <div id="message"></div>
+    <form id="authForm">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <div class="btnContainer">
+        <!-- Buttons use type="button" to prevent default form submission -->
+        <button type="button" id="loginBtn" class="btn">Login</button>
+        <button type="button" id="registerBtn" class="btn">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- FOOTER SECTION -->
+  <div class="footerContainer">
+    <div class="footer">
+      &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
+    </div>
+  </div>
+
+  <!-- JavaScript to handle AJAX form submission -->
+  <script>
+    // Add event listeners for the login and register buttons
+    document.getElementById("loginBtn").addEventListener("click", function () {
+      submitForm("login");
+    });
+    document.getElementById("registerBtn").addEventListener("click", function () {
+      submitForm("register");
+    });
+
+    // Function to submit the form data using the Fetch API to the /auth endpoint
+    function submitForm(action) {
+      const form = document.getElementById("authForm");
+      const formData = new FormData(form);
+      formData.append("action", action);
+
+      fetch("/auth", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const msgDiv = document.getElementById("message");
+        msgDiv.textContent = data.message;
+        // Change message color based on success (green) or error (red)
+        msgDiv.style.color = data.success ? "green" : "red";
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+    }
+  </script>
+</body>
+</html>
+
+
