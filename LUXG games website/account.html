@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUGX - Account</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- HEADER SECTION -->
+  <div class="headerContainer">
+    <div class="header">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="logo" />
+      </a>
+      <div class="headerLinks">
+        <button class="btn" onclick="window.location.href='index.html'">Home</button>
+        <button class="btn" onclick="window.location.href='ourShop.html'">Our Shop</button>
+        <button class="btn" onclick="window.location.href='contactUs.html'">Contact Us</button>
+        <button class="btn signInBtn" onclick="window.location.href='login.html'">Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT INFO SECTION -->
+  <div class="accountContainer">
+    <h2>Your Account</h2>
+    <!-- Display user email and password -->
+    <div class="accountDetails">
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Password:</strong> {{ password }}</p>
+    </div>
+  </div>
+
+  <!-- FOOTER SECTION -->
+  <div class="footerContainer">
+    <div class="footer">
+      &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
+    </div>
+  </div>
+</body>
+</html>

@@ -1,88 +1,143 @@
-import os
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 import json
-from flask import Flask, request, render_template_string
+import os
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  # Required for session management
+app.secret_key = 'your_secret_key'  # Required for session management
 
-# File to store user data
-USERS_FILE = "users.json"
+USERS_FILE = 'users.json'
 
-# -------------------------------
-# File handling functions
-# -------------------------------
+# ---------------------------
+# Helper functions
+# ---------------------------
+
 def load_users():
-    """Load users from a JSON file; return an empty dict if file doesn't exist."""
-    if not os.path.exists(USERS_FILE):
-        return {}
+    """
+    Load the users dictionary from the file.
+    If the file doesn't exist, return an empty dictionary.
+    """
     try:
-        with open(USERS_FILE, "r") as f:
-            users = json.load(f)
-        return users
+        if os.path.exists(USERS_FILE):
+            with open(USERS_FILE, 'r') as file:
+                users = json.load(file)
+        else:
+            users = {}
     except Exception as e:
-        print("Error loading users:", e)
-        return {}
+        print(f"Error loading users: {e}")
+        users = {}
+    return users
 
 def save_users(users):
-    """Save the users dictionary to a JSON file."""
+    """
+    Save the users dictionary to the file.
+    """
     try:
-        with open(USERS_FILE, "w") as f:
-            json.dump(users, f, indent=4)
+        with open(USERS_FILE, 'w') as file:
+            json.dump(users, file)
     except Exception as e:
-        print("Error saving users:", e)
+        print(f"Error saving users: {e}")
 
-# -------------------------------
-# User registration and login functions
-# -------------------------------
 def register_user(email, password):
-    """Register a new user. Return (success, message)."""
+    """
+    Register a new user if not already registered.
+    Returns a tuple (success, message).
+    """
     users = load_users()
+    # Use simple search (linear search in dictionary keys)
     if email in users:
-        return (False, "Email already registered. Please log in instead.")
-    users[email] = password
+        return (False, "Account already registered.")
+    # Save user data
+    users[email] = {"email": email, "password": password}
     save_users(users)
-    return (True, "Registration successful. You can now log in.")
+    return (True, "Registration successful. You are now logged in.")
 
 def login_user(email, password):
-    """Log in a user. Return (success, message)."""
+    """
+    Login an existing user if credentials match.
+    Returns a tuple (success, message).
+    """
     users = load_users()
     if email not in users:
-        return (False, "Email not registered. Please register first.")
-    if users[email] != password:
-        return (False, "Incorrect password. Please try again.")
+        return (False, "Account not registered.")
+    # Check if the provided password matches the stored password
+    if users[email]["password"] != password:
+        return (False, "Incorrect password.")
     return (True, "Login successful.")
 
-# -------------------------------
-# Route for handling authentication (AJAX endpoint)
-# -------------------------------
-@app.route("/auth", methods=["POST"])
+# ---------------------------
+# Routes
+# ---------------------------
+
+@app.route('/')
+def home():
+    return render_template('index.html')  # Assume you have an index.html
+
+@app.route('/login')
+def login_page():
+    # Render the login/register page
+    return render_template('login.html')
+
+@app.route('/account')
+def account_page():
+    """
+    Display account details if the user is logged in.
+    """
+    if 'user_email' in session:
+        email = session['user_email']
+        users = load_users()
+        user = users.get(email, {})
+        return render_template('account.html', email=user.get("email"), password=user.get("password"))
+    else:
+        return redirect(url_for('login_page'))
+
+@app.route('/auth', methods=['POST'])
 def auth():
-    email = request.form.get("email", "").strip()
-    password = request.form.get("password", "")
+    """
+    Handle registration and login requests via AJAX.
+    """
     action = request.form.get("action")
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    # Basic validation
+    if not email or not password:
+        return jsonify({"success": False, "message": "Please provide both email and password."})
+    
     if action == "register":
         success, message = register_user(email, password)
+        if success:
+            # Set session and redirect to account page
+            session['user_email'] = email
+        return jsonify({"success": success, "message": message})
     elif action == "login":
         success, message = login_user(email, password)
+        if success:
+            session['user_email'] = email
+        return jsonify({"success": success, "message": message})
     else:
-        success, message = False, "Invalid action."
-    return json.dumps({"success": success, "message": message}), 200, {"Content-Type": "application/json"}
+        return jsonify({"success": False, "message": "Invalid action."})
 
-# -------------------------------
-# Main route to render the login page
-# -------------------------------
-@app.route("/")
-def home():
-    # For simplicity, we serve the login page directly from the file system.
-    # In production, you might use render_template with a separate HTML file.
-    with open("login.html", "r", encoding="utf-8") as f:
-        html_content = f.read()
-    return render_template_string(html_content)
+# ---------------------------
+# Testing (Manual or Automated)
+# ---------------------------
+# You can write tests using unittest or pytest in a separate file.
+# For example, a simple test function for register_user:
 
-# -------------------------------
-# Run the Flask application
-# -------------------------------
-if __name__ == "__main__":
+def test_register_user():
+    # Clear users file for testing
+    if os.path.exists(USERS_FILE):
+        os.remove(USERS_FILE)
+    # Test registration of new user
+    success, msg = register_user("test@example.com", "test123")
+    assert success == True, "Registration should succeed for new user"
+    # Test duplicate registration
+    success, msg = register_user("test@example.com", "test123")
+    assert success == False, "Duplicate registration should fail"
+    print("All tests passed.")
+
+if __name__ == '__main__':
+    # Uncomment the following line to run tests:
+    # test_register_user()
     app.run(debug=True)
 
 
