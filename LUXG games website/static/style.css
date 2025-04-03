@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global Styles - Set default styles for body */
 body {
     padding: 0;
     margin: 0;
@@ -6,7 +6,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* HEADER */
+/* HEADER - Style for the header section and navigation */
 .headerContainer {
     background-color: #0171F9;
 }
@@ -43,9 +43,8 @@ body {
 .logo img {
     width: 150px;
 }
-/* END HEADER */
 
-/* LANDING PAGE */
+/* LANDING PAGE - Style for the main landing page section */
 .landingPageContainer {
     background-color: #0171F9;
     border-radius: 0 0 100px 100px;
@@ -129,10 +128,8 @@ body {
     width: 100%;
     border-radius: 20px;
 }
-/* END LANDING PAGE */
 
-/* SEARCH RESULTS SECTION */
-/* New search results container above Trending Games */
+/* SEARCH RESULTS SECTION - Container and card styles for search results */
 .searchResultsContainer {
     margin: auto;
     max-width: 1300px;
@@ -165,7 +162,7 @@ body {
     color: gray;
 }
 
-/* TRENDING GAMES */
+/* TRENDING GAMES - Styles for trending games section */
 .trendingContainer {
     margin: auto;
     max-width: 1300px;
@@ -226,9 +223,8 @@ body {
 .trendingCard .cardInfo img:hover {
     transform: scale(1.3);
 }
-/* END TRENDING GAMES */
 
-/* MOST PLAYED */
+/* MOST PLAYED - Styles for the most played games section */
 .cardImg img {
     border-radius: 20px;
 }
@@ -251,9 +247,8 @@ body {
     max-width: 1300px;
     margin: auto;
 }
-/* END MOST PLAYED */
 
-/* TOP CATEGORIES */
+/* TOP CATEGORIES - Styles for the top categories section */
 .categoryContainer {
     margin-top: 150px;
 }
@@ -284,9 +279,8 @@ body {
 .category .card:hover {
     transform: scale(1.05);
 }
-/* END TOP CATEGORIES */
 
-/* FOOTER */
+/* FOOTER - Style for the footer section */
 .footerContainer {
     background-color: #0171F9;
     height: 150px;
@@ -303,9 +297,8 @@ body {
     font-weight: 500;
     font-size: larger;
 }
-/* END FOOTER */
 
-/* FORM */
+/* FORM - Styles for the form container and form elements */
 .formContainer {
     display: flex;
     padding: 40px;
@@ -340,9 +333,8 @@ body {
     padding-top: 10px;
     resize: none;
 }
-/* END FORM */
 
-/* SHOP PRODUCTS */
+/* SHOP PRODUCTS - Styles for shop products display */
 .shopContainer {
     max-width: 1300px;
     margin: auto;
@@ -406,7 +398,8 @@ body {
     background-color: #005bb5;
     cursor: pointer;
 }
-/* PRODUCT DETAILS */
+
+/* PRODUCT DETAILS - Styles for product detail page layout */
 .productDetailContainer {
     max-width: 1300px;
     margin: auto;
@@ -453,7 +446,8 @@ body {
     background-color: #005bb5;
     cursor: pointer;
 }
-/* MODAL */
+
+/* MODAL - Styles for modal window */
 .modal {
   display: none;
   position: fixed;
@@ -477,7 +471,8 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
-/* NOTIFICATION */
+
+/* NOTIFICATION - Styles for notification popup */
 .notification {
   position: fixed;
   top: 20px;
@@ -489,7 +484,8 @@ body {
   z-index: 1001;
   opacity: 0.9;
 }
-/* LOGIN PAGE */
+
+/* LOGIN PAGE - Styles for the login page layout */
 .loginContainer {
     max-width: 400px;
     margin: 50px auto;
@@ -516,7 +512,7 @@ body {
 }
 .loginContainer .btnContainer {
     display: flex;
-    gap: 20px; /* المسافة بين الزرين */
+    gap: 20px; /* Space between buttons */
     width: 100%;
     justify-content: center;
 }
@@ -532,7 +528,7 @@ body {
     background-color: #023779;
 }
 
-/* SEARCH POPUP (إذا لزم الأمر) */
+/* SEARCH POPUP - Styles for the search popup */
 #searchPopup {
     margin-top: 10px;
     padding: 10px;
@@ -560,25 +556,21 @@ body {
     display: flex;
     flex-direction: column;
 }
-/* END SEARCH RESULTS SECTION */
 
-/* New CSS for trending rows */
+/* New CSS for trending rows - Arrange trending items in rows */
 .trendingRow {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-  }
-  
-
-
-  .categoryChart {
-    display: flex;
-    justify-content: center; /* لتوسيط الصورة أفقياً */
-    align-items: center;
-    width: 50%; /* تقليل حجم الصورة إلى النصف */
-    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
-    display: block; /* يضمن أن الصورة تتصرف كعنصر block */
-    margin: 0 auto; /* لتوسيط الصورة عمودياً */
 }
 
-
+/* CATEGORY CHART - Style for chart images in categories */
+.categoryChart {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 50%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}

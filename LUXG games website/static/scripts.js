@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- وظيفة روابط الهيدر (إن وُجدت) ---
+  // Handle header links if they have a data-href attribute
   const headerLinks = document.querySelectorAll(".headerLinks a, .headerLinks button");
   headerLinks.forEach(link => {
     const targetHref = link.getAttribute("data-href");
-    if(targetHref && targetHref !== "#") {
+    if (targetHref && targetHref !== "#") {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         window.location.href = targetHref;
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- وظيفة زر "Sign In" ---
+  // Handle "Sign In" button click
   const signInBtns = document.querySelectorAll(".signInBtn");
   signInBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -20,26 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- وظيفة زر "SEARCH NOW" باستخدام fetch للبحث ---  
+  // Get elements for the search functionality
   const searchBtn = document.getElementById("searchBtn");
   const searchInput = document.getElementById("searchInput");
   const searchResults = document.getElementById("searchResults");
 
+  // Function to perform search using fetch
   function performSearch() {
     const query = searchInput.value.trim();
-    if(query === "") {
+    if (query === "") {
+      // Show message if search query is empty
       searchResults.innerHTML = "<p>Please enter a search query</p>";
       return;
     }
+    // Fetch search results from the server
     fetch(`/search?query=${encodeURIComponent(query)}`)
       .then(response => response.json())
       .then(data => {
-        searchResults.innerHTML = ""; // مسح النتائج السابقة
-        if(data.length === 0) {
+        // Clear previous search results
+        searchResults.innerHTML = "";
+        if (data.length === 0) {
           searchResults.innerHTML = "<p>No results found.</p>";
         } else {
           data.forEach(game => {
-            // إنشاء بطاقة نتيجة بحث صغيرة
+            // Create a card for each search result
             const card = document.createElement("div");
             card.className = "card searchResult";
             card.innerHTML = `
@@ -64,21 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  if(searchBtn && searchInput) {
+  // Add event listeners for the search button and Enter key in search input
+  if (searchBtn && searchInput) {
     searchBtn.addEventListener("click", (e) => {
       e.preventDefault();
       performSearch();
     });
-    // تفعيل زر Enter في حقل البحث
     searchInput.addEventListener("keydown", (e) => {
-      if(e.key === "Enter") {
+      if (e.key === "Enter") {
         e.preventDefault();
         performSearch();
       }
     });
   }
 
-  // --- وظيفة زر "View All" ---
+  // Handle "View All" buttons in trending and most played sections
   const viewAllBtns = document.querySelectorAll(".mostHeader .btn, .trendingHeader .btn");
   viewAllBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -87,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- وظيفة زر "Explore" ---
+  // Handle "Explore" buttons click
   const exploreBtns = document.querySelectorAll(".exploreBtn, .card .btn:not(.buyNowBtn):not(.addToCartBtn)");
   exploreBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -96,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- وظيفة زر "Buy Now" ---
+  // Handle "Buy Now" buttons click
   const buyNowButtons = document.querySelectorAll(".buyNowBtn");
   buyNowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
@@ -105,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- وظيفة زر "Add to Cart" ---
+  // Handle "Add to Cart" buttons click
   const addToCartButtons = document.querySelectorAll(".addToCartBtn");
   addToCartButtons.forEach(button => {
     button.addEventListener("click", (e) => {
@@ -114,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- وظيفة أيقونات السلة في قسم Trending ---
+  // Handle cart icon clicks in the trending section
   const cartIcons = document.querySelectorAll(".trendingCard .icon");
   cartIcons.forEach(icon => {
     icon.addEventListener("click", (e) => {
@@ -123,17 +127,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-
-
-
-
-
-
-
-// نصايح عبدالباري
-  //Create a database and link it to the website e.g. SQL
-  //Create tables users, products, orders
-  //phpMyAdmin
-  //Give me a full step by step tutorial on how to set up sql and phpmyadmin with my current website
-  
