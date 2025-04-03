@@ -570,30 +570,15 @@ body {
   }
   
 
-  
- 
-  
 
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
+  .categoryChart {
+    display: flex;
+    justify-content: center; /* لتوسيط الصورة أفقياً */
+    align-items: center;
+    width: 50%; /* تقليل حجم الصورة إلى النصف */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    display: block; /* يضمن أن الصورة تتصرف كعنصر block */
+    margin: 0 auto; /* لتوسيط الصورة عمودياً */
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-img {
-    width: 150px;
-    height: auto;
-}
