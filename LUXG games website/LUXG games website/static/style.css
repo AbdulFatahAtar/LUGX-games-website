@@ -569,3 +569,16 @@ body {
     margin-bottom: 20px;
   }
   
+
+
+  .categoryChart {
+    display: flex;
+    justify-content: center; /* لتوسيط الصورة أفقياً */
+    align-items: center;
+    width: 50%; /* تقليل حجم الصورة إلى النصف */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    display: block; /* يضمن أن الصورة تتصرف كعنصر block */
+    margin: 0 auto; /* لتوسيط الصورة عمودياً */
+}
+
+
