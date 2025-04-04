@@ -13,12 +13,13 @@ I confirm that this assignment is my own work.
 Where I have referred to online sources, I have provided comments detailing the reference and included a link to the source.
 
 ## Introduction
-LUXG Games Website is an exciting web application made with Python and Flask. It’s designed to give you an interactive gaming experience with a well-organised and easy-to-maintain structure. The main functions are handled by login.py, which takes care of user login, routing, and data processing. User information, like usernames and profiles, is saved in users.json and accessed through functions like register_user() and login_user().
+LUXG Games Website is an exciting web application that uses Python, HTML, CSS, and JavaScript. It’s designed to give you an online gaming shop experience with a well organised and simple structure. The main functions are handled by login.py, which handles user login, routing, sorting user information and data processing. User information like email and password is saved in users.json and accessed through functions like register_user() and login_user().
 
-The front-end uses HTML, CSS, and JavaScript, featuring important templates like index.html (homepage), account.html (user dashboard), ourShop.html (game store), and contactUs.html (support page). The static files, including style.css and scripts.js, help improve the user interface, making sure everything works smoothly, such as game searches and navigation.
-To set up and run the project, make sure you have Python installed. Start the application by executing `python login.py`, which will launch the website at `http://127.0.0.1:5000`. The site has great features like user registration and login, a game search function, a list of trending and most-played games, an online store for gaming products, and a contact form. Plus, it uses matplotlib for data visualisation, showing a pie chart of the most popular game categories. The project also includes good error handling and file access methods for efficient data management.
+The front end uses HTML, CSS, and JavaScript, featuring important templates like index.html (homepage), account.html (user dashboard), ourShop.html (game store), login.html (login and register page) and contactUs.html (support page). The static files including images file, style.css and scripts.js help improve the user interface which makes sure everything works smoothly such as login in the website and contact.
 
-The project runs on Flask for the back-end, uses matplotlib for showing gaming trends, json for saving user data, and Git for version control. The front-end design is fully responsive, ensuring a smooth experience on all devices. With its clear structure and expandable design, LUXG Games Website offers a fantastic platform for gaming fans, mixing functionality with ease of use.
+To set up and run the project, make sure you have Python installed. Start the application by executing `python login.py` or run the code from VS code which will launch the website at `http://127.0.0.1:5000`. The site has great features like user registration and login, a list of trending and most-played games, an online store for gaming products, and a contact form. In addition, it uses matplotlib for data visualisation which shows a pie chart of the most popular game categories. The project also includes good error handling and file access methods for efficient data management.
+
+The project runs on Python for the back end, HTML, CSS and JavaScript for the front end use matplotlib for showing gaming trends, json for saving user data, and Git for version control. The front end design is fully responsive, ensuring a smooth experience on all devices. With its clear structure and simple design, the LUXG Games Website offers a fantastic platform for gaming fans, mixing functionality with ease of use.
 
 ## Installation
 To run the project, ensure you have Python installed, then install the required dependencies from the `requirements.txt` file using the following command:
@@ -92,6 +93,3 @@ This command will execute all the test cases defined in the project.
 ## Contribution Guidelines 
 If you wish to contribute to this project, please feel free to open an issue or submit a pull request.
 
-## License 
-This project is licensed under the MIT License.
-```
