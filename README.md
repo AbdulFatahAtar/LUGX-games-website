@@ -14,8 +14,10 @@ Where I have referred to online sources, I have provided comments detailing the 
 
 ## Introduction
 LUXG Games Website is an exciting web application made with Python and Flask. It’s designed to give you an interactive gaming experience with a well-organised and easy-to-maintain structure. The main functions are handled by login.py, which takes care of user login, routing, and data processing. User information, like usernames and profiles, is saved in users.json and accessed through functions like register_user() and login_user().
+
 The front-end uses HTML, CSS, and JavaScript, featuring important templates like index.html (homepage), account.html (user dashboard), ourShop.html (game store), and contactUs.html (support page). The static files, including style.css and scripts.js, help improve the user interface, making sure everything works smoothly, such as game searches and navigation.
 To set up and run the project, make sure you have Python installed. Start the application by executing `python login.py`, which will launch the website at `http://127.0.0.1:5000`. The site has great features like user registration and login, a game search function, a list of trending and most-played games, an online store for gaming products, and a contact form. Plus, it uses matplotlib for data visualisation, showing a pie chart of the most popular game categories. The project also includes good error handling and file access methods for efficient data management.
+
 The project runs on Flask for the back-end, uses matplotlib for showing gaming trends, json for saving user data, and Git for version control. The front-end design is fully responsive, ensuring a smooth experience on all devices. With its clear structure and expandable design, LUXG Games Website offers a fantastic platform for gaming fans, mixing functionality with ease of use.
 
 ## Installation
@@ -67,7 +69,7 @@ LUXG games website/
 ├── users.json
 ├── readme.md
 ├── static/
-│   ├── images
+│   ├── images/
 │   ├── scripts.js
 │   └── style.css
 ├── templates/
