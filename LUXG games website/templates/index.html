@@ -72,7 +72,7 @@
       <span>Trending</span>
       <div class="trendingHeader">
         <h1>Trending Games</h1>
-        <button class="btn" onclick="window.open('template/ourShop.html','_blank')">view all</button>
+        <li><a class="btn" href="{{ url_for('shop_page') }}">view all</a></li>
       </div>
       <div class="trendingCard">
         <!-- Game Card 1 -->
@@ -136,7 +136,7 @@
         <span>top games</span>
         <div class="mostHeader">
           <h1>Most Played</h1>
-          <button class="btn" onclick="window.open('template/ourShop.html','_blank')">view all</button>
+          <li><a class="btn" href="{{ url_for('shop_page') }}">view all</a></li>
         </div>
         <div class="mostCards">
           <!-- Game Card 1 -->
