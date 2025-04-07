@@ -43,7 +43,7 @@ def register_user(email, password):
     save_users(users)
     return True, "Registration successful. You are now logged in."
 
-# this function check if the user exists and if the password matches
+# this function checks if the user exists and if the password matches
 def login_user(email, password):
     users = load_users()
     if email not in users:
@@ -52,14 +52,14 @@ def login_user(email, password):
         return False, "Incorrect password."
     return True, "Login successful."
 
-# this function sort users by email and return a sorted dictionary
+# this function sorts users by email and return a sorted dictionary
 def get_sorted_users():
     users = load_users()
     sorted_emails = sorted(users.keys())
     sorted_users = {email: users[email] for email in sorted_emails}
     return sorted_users
 
-# this function ceate a pie chart for game category usage
+# this function creates a pie chart for game category usage
 def generate_top_categories_chart():
     labels = ['Puzzle Games', 'Strategy Games', 'Racing Games', 'Adventure Games', 'Action Games']
     sizes = [20, 25, 15, 30, 10]
@@ -79,17 +79,17 @@ def generate_top_categories_chart():
     plt.close()
     print(f"Chart saved at {chart_path}")
 
-# this function render the home page with the top categories chart
+# this function renders the home page with the top categories chart
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# this function render the login page
+# this function renders the login page
 @app.route('/login')
 def login_page():
     return render_template('login.html')
 
-# this function render the account page
+# this function renders the account page
 @app.route('/account')
 def account_page():
     if 'user_email' in session:
@@ -172,11 +172,13 @@ class TestUserFunctions(unittest.TestCase):
         self.assertFalse(success)
         self.assertEqual(message, "Account not registered.")
 
+# this function test and check if the chart is created
     def test_generate_chart(self):
         generate_top_categories_chart()
         chart_path = os.path.join('static2', 'images', 'top_categories_pie.png')
         self.assertTrue(os.path.exists(chart_path))
 
+# this function test the sorting of users and check if the users are sorted by email
     def test_get_sorted_users(self):
         register_user("z@example.com", "pass")
         register_user("a@example.com", "pass")
