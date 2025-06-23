@@ -8,7 +8,7 @@ The source code for this project is available on GitHub: (https://github.com/Abd
 
 * **Name:** Abdul Fatah Abdul Rauof Atar
 * **P-number:** P456774
-* **Course code:** IY499 - Introduction to Programming
+* **Course code:** IY4103 - Web Development
 
 ## Declaration of Own Work
 
