@@ -1,95 +1,127 @@
 # LUGX Games Website
 
-# GitHub Repository
-The source code for this project is available on GitHub: https://github.com/AbdulFatahAtar/LUGX-games-website
+## GitHub Repository
+
+The source code for this project is available on GitHub: (https://github.com/AbdulFatahAtar/LUGX-games-website)
 
 ## Identification
-- **Name:** Abdul Fatah Abdul Rauof Atar
-- **P-number:** P456774
-- **Course code:** IY499 - Introduction to Programming
+
+* **Name:** Abdul Fatah Abdul Rauof Atar
+* **P-number:** P456774
+* **Course code:** IY499 - Introduction to Programming
 
 ## Declaration of Own Work
-I confirm that this assignment is my own work.  
-Where I have referred to online sources, I have provided comments detailing the reference and included a link to the source.
+
+I confirm that this assignment is my own work. 
 
 ## Introduction
-LUXG Games Website is an exciting web application that uses Python, HTML, CSS, and JavaScript. It’s designed to give you an online gaming shop experience with a well organised and simple structure. The main functions are handled by login.py, which handles user login, routing, sorting user information and data processing. User information like email and password is saved in users.json and accessed through functions like register_user() and login_user().
 
-The front end uses HTML, CSS, and JavaScript, featuring important templates like index.html (homepage), account.html (user dashboard), ourShop.html (game store), login.html (login and register page) and contactUs.html (support page). The static files including images file, style.css and scripts.js help improve the user interface which makes sure everything works smoothly such as login in the website and contact.
+LUGX Games Website is a fresh web application built with Python, Flask, HTML, CSS and JavaScript. It uses separate SQLite databases for users, games and orders, managed via SQLAlchemy. The back end lives in **main.py**, handling routes, user sessions and order processing. A simple script, **create_db.py**, sets up the database tables. Games data is initialised automatically if none exist.
 
-To set up and run the project, make sure you have Python installed. Start the application by executing `python login.py` or run the code from VS code which will launch the website at `http://127.0.0.1:5000`. The site has great features like user registration and login, a list of trending and most-played games, an online store for gaming products, and a contact form. In addition, it uses matplotlib for data visualisation which shows a pie chart of the most popular game categories. The project also includes good error handling and file access methods for efficient data management.
+The front end uses familiar templates: **index.html** for the home page, **ourShop.html** for the store, **login.html** for login and registration, **account.html** for user details, **cart.html** for the shopping cart, **search_results.html** for search outcomes, and **contactUs.html** for support messages. Static assets include **style.css**, **scripts.js** and images in **static/images** and **static2/images** (including a pie chart of top categories).
 
-The project runs on Python for the back end, HTML, CSS and JavaScript for the front end use matplotlib for showing gaming trends, json for saving user data, and Git for version control. The front end design is fully responsive, ensuring a smooth experience on all devices. With its clear structure and simple design, the LUXG Games Website offers a fantastic platform for gaming fans, mixing functionality with ease of use.
+To launch the site, simply run `python main.py`. The app starts on port 5001 by default and offers user registration, login, trending and top games display, a searchable shop, cart and checkout with unique order numbers, and a contact form. A pie chart shows the most popular game categories, generated with Matplotlib.
 
-## Installation
-To run the project, ensure you have Python installed, then install the required dependencies from the `requirements.txt` file using the following command:
-```bash
-pip install -r requirements.txt
-```
+## Key Functions
 
-## How to Run
-- Run the website by executing the `login.py` file:
-  ```bash
-  python login.py
-  ```
-- Open your web browser and visit:
-  ```
-  http://127.0.0.1:5000
-  ```
-
-### Running Unit Tests
-```bash
-python login.py test
-```
-
-## Project Elements
-- User registration and login
-- Game search functionality
-- Display of trending and most played games
-- Online shopping for gaming products
-- A "Contact Us" form
-- Responsive web design
-- Data visualisation using a pie chart (matplotlib)
-- Comprehensive error handling and recovery mechanisms
-- File access for reading and writing user data
-- Use of functions, complex data structures, and well-commented code
-- Application of a search or sort algorithm
+The application relies on several main functions that keep it running smoothly. `register_user()` handles new account creation, including form checks and password hashing. `login_user()` manages user sessions securely. `add_to_cart()` allows adding games into the shopping cart with quantity tracking, while `update_cart()` changes quantities and re-calculates totals. `checkout()` completes an order, gives a unique order number and saves it. `search_games()` lets users find games by name or genre without worrying about case. `generate_pie_chart()` uses Matplotlib to show which game categories are most popular. Finally, `contact()` deals with support messages, saving each one and flashing a confirmation.
 
 ## Libraries Used
-The following libraries and packages are used in this project:
-- Flask (for web framework)
-- matplotlib (for data visualisation)
-- json (for file handling)
-- unittest (for unit testing)
-- HTML, CSS, and JavaScript (for the frontend)
-- Git (for version control)
+
+* **Flask** – web framework
+* **Flask-SQLAlchemy** – ORM & multi-bind support
+* **SQLAlchemy** – query building & functions
+* **matplotlib** – chart generation
+* **datetime** – for timestamps
+* **os** – system operations
+* **json** – data structure handling
+* **random** – random value generation
+* **string** – string constants
+
+Front-end: HTML5, CSS3, Google Fonts, JavaScript (vanilla, fetch/AJAX).
+python
+from flask import Flask, request, jsonify, render\_template, redirect, url\_for, session, flash
+from flask sqlalchemy import SQLAlchemy
+import os
+import matplotlib.pyplot as plt
+from sqlalchemy import or, func
+from datetime import datetime
+import json
+import random
+import string
+
+````
+These libraries handle the web framework, database connections, chart drawing, and general utilities.
+
+## Installation
+1. Ensure you have Python 3 installed.
+
+> **Note:** There is no `requirements.txt` file; simply install the following packages:
+```bash
+pip install flask flask_sqlalchemy matplotlib
+````
+
+## How to Run
+
+Start the server by running:
+
+```bash
+python main.py
+```
+
+Then open your web browser and go to:
+
+```
+http://127.0.0.1:5001
+```
+
+### Initialising Databases
+
+To create the SQLite tables without launching the server:
+
+```bash
+python create_db.py
+```
 
 ## Project Structure
-LUXG games website/
-├── login.py
-├── users.json
-├── readme.md
+
+```
+LUGX-games-website/
+├── databases/
+│   ├── users.db
+│   ├── games.db
+│   └── orders.db
 ├── static/
 │   ├── images/
-│   ├── scripts.js
-│   └── style.css
+│   ├── style.css
+│   └── scripts.js
+├── static2/
+│   └── images/
+│       └── top_categories_pie.png
 ├── templates/
 │   ├── index.html
-│   ├── account.html
-│   ├── contactUs.html
+│   ├── ourShop.html
 │   ├── login.html
-│   └── ourShop.html
-└── static2/
-    └── images
-
-## Unit Tests 
-The project includes unit tests to verify key functionalities such as user registration, login, and chart generation.
-To run the unit tests, navigate to the project directory and run:
-```bash
-python login.py test
+│   ├── account.html
+│   ├── cart.html
+│   ├── search_results.html
+│   └── contactUs.html
+├── create_db.py
+├── main.py
+└── README.md
 ```
-This command will execute all the test cases defined in the project.
 
-## Contribution Guidelines 
-If you wish to contribute to this project, please feel free to open an issue or submit a pull request.
+## Unit Tests
 
+Although no formal tests are included, you can test manually by:
+
+1. Registering a user and checking the database entry.
+2. Logging in and out to verify sessions.
+3. Adding, updating and removing items in the cart.
+4. Completing a checkout and confirming the order number appears in `orders.db`.
+5. Searching for games by name or genre.
+6. Viewing the pie chart under `static2/images/top_categories_pie.png`.
+
+## Contribution
+
+Contributions are very welcome. Feel free to open an issue or submit a pull request at the GitHub repository.

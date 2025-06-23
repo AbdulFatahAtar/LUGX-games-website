@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>LUGX - Search Results</title>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <div class="headerContainer">
+        <div class="header">
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" />
+            </a>
+            <div class="headerLinks">
+                <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                {% if session.user_email %}
+                  <li><span style="color: #ee626b;">{{ session.user_email }}</span></li>
+                  <li><a href="{{ url_for('account_page') }}">Account</a></li>
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+                <li><a href="{{ url_for('cart_page') }}" class="cartLink">Cart</a></li>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH RESULTS SECTION -->
+    <div class="searchResultsContainer">
+        <div class="searchHeader">
+            <h1>Search Results</h1>
+            <p>Results for: "{{ query }}"</p>
+            
+            <!-- Search form for new searches -->
+            <div class="searchBar">
+                <form id="searchForm" action="{{ url_for('search') }}" method="GET">
+                    <input 
+                        type="text" 
+                        name="q"
+                        placeholder="Search games..." 
+                        value="{{ query }}"
+                        autocomplete="off"
+                    />
+                    <button type="submit" class="searchBtn">Search</button>
+                </form>
+            </div>
+        </div>
+
+        {% if games %}
+            <div class="gamesGrid">
+                {% for game in games %}
+                <div class="gameCard">
+                    <div class="cardImg">
+                        <img src="{{ url_for('static', filename=game.image_url.split('static/')[-1]) }}" alt="{{ game.name }}" />
+                    </div>
+                    <div class="cardInfo">
+                        <p class="genre">{{ game.genre }}</p>
+                        <h3 class="cardName">{{ game.name }}</h3>
+                        <p class="price">{% if game.price == 0 %}Free{% else %}${{ "%.2f"|format(game.price) }}{% endif %}</p>
+                        {% if game.is_trending %}
+                            <span class="badge trending">Trending</span>
+                        {% endif %}
+                        {% if game.is_top %}
+                            <span class="badge top">Top Game</span>
+                        {% endif %}
+                        <button class="btn" onclick="window.open('https://store.steampowered.com','_blank')">explore</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="noResults">
+                <p>No games found matching your search.</p>
+                <a href="{{ url_for('home') }}" class="btn">Return to Home</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <div class="footerContainer">
+        <div class="footer">
+            &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
+        </div>
+    </div>
+</body>
+</html> 

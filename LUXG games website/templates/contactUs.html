@@ -8,36 +8,41 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="static/style.css" />
-    <title>LUGX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>LUGX - Contact Us</title>
   </head>
   <body>
     <!-- HEADER -->
     <div class="headerContainer">
       <div class="header">
-        <a href="index.html" class="logo">
-          <img src="static/images/logo.png" alt="logo" />
+        <a href="{{ url_for('home') }}" class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" />
         </a>
         <div class="headerLinks">
-          <li><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a href="{{ url_for('login_page') }}">Login</a></li>
-          <li><a href="{{ url_for('account_page') }}">Account</a></li>
+          <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+          {% if session.user_email %}
+            <li><span style="color: #ee626b;">{{ session.user_email }}</span></li>
+            <li><a href="{{ url_for('account_page') }}">Account</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
           <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
           <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+          <li><a href="{{ url_for('cart_page') }}" class="cartLink">Cart</a></li>
         </div>
       </div>
     </div>
 
     <!-- FORM  -->
     <div class="formContainer">
-        <form action="index.html">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea name="question" cols="30" rows="10" placeholder="Any Question"></textarea>
-            <button class="btn">Send</button>    
+        <form action="{{ url_for('contact_page') }}" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" cols="30" rows="10" placeholder="Any Question" required></textarea>
+            <button type="submit" class="btn">Send Message</button>    
         </form>
     </div>
-
 
     <!-- FOOTER  -->
     <div class="footerContainer">
@@ -45,5 +50,5 @@
             &copy; 2048 LUGX Gaming Company. All rights reserved. Design: Abdul Fatah Atar
         </div>
     </div>
-</body>
+  </body>
 </html>

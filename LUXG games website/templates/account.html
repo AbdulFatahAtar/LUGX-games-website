@@ -10,27 +10,37 @@
   <!-- HEADER SECTION -->
   <div class="headerContainer">
     <div class="header">
-      <a href="index.html" class="logo">
+      <a href="{{ url_for('home') }}" class="logo">
         <img src="static/images/logo.png" alt="logo" />
       </a>
       <div class="headerLinks">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('login_page') }}">Login</a></li>
-        <li><a href="{{ url_for('account_page') }}">Account</a></li>
+        <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+        {% if session.user_email %}
+          <li><span style="color: #ee626b;">{{ session.user_email }}</span></li>
+          <li><a href="{{ url_for('account_page') }}">Account</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
         <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
         <li><a href="{{ url_for('shop_page') }}">Our Shop</a></li>
+        <li><a href="{{ url_for('cart_page') }}" class="cartLink">Cart</a></li>
       </div>
     </div>
   </div>
 
-  <!-- ACCOUNT INFO SECTION -->
-  <div class="accountContainer">
-    <h2>Your Account</h2>
-    <!-- Display user email and password -->
-    <div class="accountDetails">
-      <p><strong>Email:</strong> {{ email }}</p>
-      <p><strong>Password:</strong> {{ password }}</p>
-    </div>
+  <!-- ACCOUNT INFORMATION SECTION -->
+  <div class="loginContainer">
+    <h2>Account Information</h2>
+    {% if email %}
+      <div style="text-align: center; margin: 20px;">
+        <p style="font-size: 18px; margin-bottom: 10px;">Welcome back!</p>
+        <p style="color: #ee626b; font-size: 20px; margin-bottom: 20px;">{{ email }}</p>
+        <a href="{{ url_for('logout') }}" class="btn" style="display: inline-block; text-decoration: none;">Logout</a>
+      </div>
+    {% else %}
+      <p>Please <a href="{{ url_for('login') }}">login</a> to view your account information.</p>
+    {% endif %}
   </div>
 
   <!-- FOOTER SECTION -->
